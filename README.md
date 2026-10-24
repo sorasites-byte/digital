@@ -1,29 +1,22 @@
-# SORA — Dashboard — design reference
+# Sora
 
-This is a design mockup created in a visual design tool, exported as a
-standalone page. Treat it as a REFERENCE MOCKUP, not production code:
-the markup and inline styles carry the design's precise values — colors,
-font sizes, spacing, radii, shadows, layout — which an implementation
-should replicate faithfully in its own components and styling system
-rather than copy wholesale.
+Painel do Sora (exportado do design) com login pelo Supabase Auth.
 
-## Contents
+- `login.html`: entrar, criar conta e recuperar senha.
+- `auth.js`: conexão com o Supabase, proteção do painel e botão "Sair".
+- `index.html`: o painel. As 3 linhas marcadas com "LOGIN SORA" no `<head>` protegem a página.
 
-- `Main.dc.html` — the artboard (a Design Component: an `<x-dc>`
-  template + a small logic class). The values to replicate live in its
-  inline `style="…"` attributes and the `<helmet><style>` block.
-- `assets/` — files uploaded to the design (images, fonts, media)
-- `support.js`, `vendor/react*.js` — the runtime that renders the
-  component in a browser; not part of the design.
+## Ao exportar o design de novo
 
-## Uploaded files
+O export substitui o `index.html`. Depois de exportar, cole de volta logo abaixo do `<title>`:
 
-Images, fonts and media uploaded to the design are written once each under
-`assets/` — 10 in this export — and the exported files refer to them there. A
-reference a script puts together while the page runs (for example
-`"/_blob/" + id`) is not rewritten and does not load from this folder.
+```html
+<script>document.documentElement.style.visibility='hidden'</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js"></script>
+<script src="auth.js"></script>
+```
 
-## Viewing
+## Supabase
 
-Serve the folder (e.g. `python3 -m http.server`) and open `Main.dc.html`;
-some browsers block the scripts over file://.
+Authentication → URL Configuration: Site URL = `https://digital-one-zeta.vercel.app` e, em
+Redirect URLs, `https://digital-one-zeta.vercel.app/login.html`.
